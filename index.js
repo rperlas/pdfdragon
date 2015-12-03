@@ -5,10 +5,10 @@
 var fs = require('graceful-fs');
 var PDFDocument = require('pdfkit');
 
-exports.pdfGen = function (output, tail) {
+exports.pdfGen = function (output, name) {
 
 	doc = new PDFDocument();
-	doc.pipe( fs.createWriteStream('output/output' + tail + '.pdf') );
+	doc.pipe( fs.createWriteStream(name + '.pdf') );
 
 /*
 doc.moveTo(300, 75)
@@ -27,7 +27,7 @@ doc.moveTo(300, 75)
    		align: 'justify',
 	});  
 
-   for (var x = 1; x < output.length - 2; x++) {
+   for (var x = 1; x < output.length - 1; x++) {
 
       if (typeof output[x + 1].split(',')[1] === 'undefined') {
          output[x + 1] = output[x + 1].split(',')[0] + ', ';
